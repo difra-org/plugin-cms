@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale>
+	<cms>
+		<adm>
+			<h2>Pages</h2>
+			<name>Name</name>
+			<uri>URI</uri>
+			<hidden>Hidden</hidden>
+			<hidden-flag>Hidden</hidden-flag>
+			<add-page>Add page</add-page>
+			<edit>Edit</edit>
+			<delete>Delete</delete>
+			<no-pages>There is no pages.</no-pages>
+			<add-page-title>Add page</add-page-title>
+			<edit-page-title>Edit page</edit-page-title>
+
+			<title>Title</title>
+			<tag>URI (“/news”, “/about”, etc.)</tag>
+			<options>Main fields</options>
+			<body>Page text</body>
+			<submit>Save</submit>
+
+			<delete-page-confirm-1>Are you sure you want to delete page “</delete-page-confirm-1>
+			<delete-page-confirm-2>”?</delete-page-confirm-2>
+			<delete-page-confirm-yes>Delete</delete-page-confirm-yes>
+			<delete-page-confirm-no>Don't delete</delete-page-confirm-no>
+			<menu>
+				<h2>Menu management</h2>
+				<name>Menu name</name>
+				<description>Description</description>
+				<empty>There is no menu to manage.</empty>
+			</menu>
+			<items>
+				<h2>Menu elements</h2>
+				<new>Add element</new>
+				<description>Description</description>
+				<empty>There is no elements in this menu.</empty>
+			</items>
+			<menuitem>
+				<add-item-title>Add element</add-item-title>
+				<edit-item-title>Edit element</edit-item-title>
+				<options>Options</options>
+				<title>Name</title>
+				<type>Type</type>
+				<content>Content</content>
+				<type-page>Page</type-page>
+				<type-link>Link</type-link>
+				<link-label>Link text</link-label>
+				<type-empty>Empty element</type-empty>
+				<submit>Save</submit>
+				<no-pages>There are no pages that can be added.</no-pages>
+				<delete-item-confirm>Do you really want to delete menu element?</delete-item-confirm>
+			</menuitem>
+			<snippet>
+				<title>Snippets</title>
+				<title-add>Add snippet</title-add>
+				<title-edit>Edit snippet</title-edit>
+				<no-snippet>No snippets.</no-snippet>
+				<name>Name</name>
+				<description>Description</description>
+				<text>Text</text>
+				<del-confirm1>Do you really want to delete snippet «</del-confirm1>
+				<del-confirm2>»?</del-confirm2>
+			</snippet>
+		</adm>
+	</cms>
+</locale>

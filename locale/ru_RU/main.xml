@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locale>
+	<cms>
+		<adm>
+			<h2>Cтраницы</h2>
+			<name>Название</name>
+			<uri>URI</uri>
+			<hidden>Скрытая</hidden>
+			<hidden-flag>Cкрытая</hidden-flag>
+			<add-page>Добавить страницу</add-page>
+			<edit>Редактировать</edit>
+			<delete>Удалить</delete>
+			<no-pages>Нет страниц.</no-pages>
+			<add-page-title>Добавление страницы</add-page-title>
+			<edit-page-title>Редактирование страницы</edit-page-title>
+
+			<title>Название</title>
+			<tag>URI (“/news”, “/about” и т.д.)</tag>
+			<options>Основные параметры</options>
+			<body>Текст страницы</body>
+			<submit>Сохранить</submit>
+
+			<delete-page-confirm-1>Действительно удалить страницу «</delete-page-confirm-1>
+			<delete-page-confirm-2>»?</delete-page-confirm-2>
+			<delete-page-confirm-yes>Удалить</delete-page-confirm-yes>
+			<delete-page-confirm-no>Не удалять</delete-page-confirm-no>
+			<menu>
+				<h2>Управление меню</h2>
+				<name>Имя</name>
+				<description>Описание</description>
+				<empty>В этом проекте нет настраиваемых меню.</empty>
+			</menu>
+			<items>
+				<h2>Список элементов</h2>
+				<new>Добавить элемент</new>
+				<description>Описание</description>
+				<empty>В выбранном меню еще нет ни одного элемента.</empty>
+			</items>
+			<menuitem>
+				<add-item-title>Добавление элемента</add-item-title>
+				<edit-item-title>Редактирование элемента</edit-item-title>
+				<options>Параметры</options>
+				<title>Название</title>
+				<type>Тип элемента</type>
+				<content>Содержимое</content>
+				<type-page>Статичная страница</type-page>
+				<type-link>Ссылка</type-link>
+				<type-empty>Пустой элемент</type-empty>
+				<link-label>Текст ссылки</link-label>
+				<submit>Сохранить</submit>
+				<no-pages>Нет доступных страниц для добавления.</no-pages>
+				<delete-item-confirm>Действительно удалить элемент меню?</delete-item-confirm>
+			</menuitem>
+			<snippet>
+				<title>Сниппеты</title>
+				<title-add>Добавление сниппета</title-add>
+				<title-edit>Редактирование сниппета</title-edit>
+				<no-snippet>Нет сниппетов.</no-snippet>
+				<name>Название</name>
+				<description>Описание</description>
+				<text>Текст</text>
+				<del-confirm1>Действительно удалить сниппет «</del-confirm1>
+				<del-confirm2>»?</del-confirm2>
+			</snippet>
+		</adm>
+	</cms>
+</locale>

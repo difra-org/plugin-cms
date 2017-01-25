@@ -1,0 +1,9 @@
+<locale>
+	<menu>
+		<adm>
+			<menu_content_pages>Pages</menu_content_pages>
+			<menu_content_snippets>Snippets</menu_content_snippets>
+			<menu_content_menu>Menu</menu_content_menu>
+		</adm>
+	</menu>
+</locale>
