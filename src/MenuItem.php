@@ -6,7 +6,7 @@ use Difra\Cache;
 use Difra\Envi;
 use Difra\Envi\Action;
 use Difra\Exception;
-use Difra\Plugins\CMS;
+use Difra\CMS;
 
 /**
  * Class MenuItem

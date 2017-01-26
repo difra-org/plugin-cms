@@ -6,7 +6,7 @@ use Difra\Cache;
 use Difra\Envi;
 use Difra\Exception;
 use Difra\Param;
-use Difra\Plugins\CMS;
+use Difra\CMS;
 
 /**
  * Class Page

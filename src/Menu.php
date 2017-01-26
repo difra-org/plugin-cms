@@ -3,7 +3,7 @@
 namespace Difra\CMS;
 
 use Difra\Cache;
-use Difra\Plugins\CMS;
+use Difra\CMS;
 
 /**
  * Class Menu

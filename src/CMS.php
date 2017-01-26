@@ -33,7 +33,7 @@ class CMS
     public static function run()
     {
         if ($page = Page::find()) {
-            Action::setCustomAction('\Difra\Plugins\CMS\Controller', 'pageAction', [$page]);
+            Action::setCustomAction('\Difra\CMS\Controller', 'pageAction', [$page]);
         }
     }
 

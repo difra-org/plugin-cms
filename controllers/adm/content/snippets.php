@@ -1,21 +1,21 @@
 <?php
 
-use Difra\Plugins\CMS;
+use Difra\Ajaxer;
+use Difra\CMS;
+use Difra\Param;
 
 /**
  * Class AdmContentSnippetsController
  */
-class AdmContentSnippetsController extends \Difra\Controller
+class AdmContentSnippetsController extends \Difra\Controller\Adm
 {
-    public function dispatch()
-    {
-        \Difra\View::$instance = 'adm';
-    }
-
+    /**
+     * /adm/content/snippets
+     */
     public function indexAction()
     {
         $listNode = $this->root->appendChild($this->xml->createElement('snippetList'));
-        $list = \Difra\Plugins\CMS\Snippet::getList();
+        $list = CMS\Snippet::getList();
         if (!empty($list)) {
             foreach ($list as $snip) {
                 $snip->getXML($listNode);
@@ -23,18 +23,22 @@ class AdmContentSnippetsController extends \Difra\Controller
         }
     }
 
+    /**
+     * /adm/content/snippets/add
+     */
     public function addAction()
     {
         $this->root->appendChild($this->xml->createElement('snippetAdd'));
     }
 
     /**
-     * @param \Difra\Param\AnyInt $id
+     * /adm/content/snippets/edit
+     * @param Param\AnyInt $id
      * @throws Difra\View\HttpError
      */
-    public function editAction(\Difra\Param\AnyInt $id)
+    public function editAction(Param\AnyInt $id)
     {
-        if (!$snippet = \Difra\Plugins\CMS\Snippet::getById($id->val())) {
+        if (!$snippet = CMS\Snippet::getById($id->val())) {
             throw new \Difra\View\HttpError(404);
         }
         /** @var $editNode \DOMElement */
@@ -45,42 +49,44 @@ class AdmContentSnippetsController extends \Difra\Controller
     }
 
     /**
-     * @param \Difra\Param\AjaxString $name
-     * @param \Difra\Param\AjaxString $text
-     * @param \Difra\Param\AjaxInt $id
-     * @param \Difra\Param\AjaxString $description
+     * /adm/content/snippets/save
+     * @param Param\AjaxString $name
+     * @param Param\AjaxString $text
+     * @param Param\AjaxInt $id
+     * @param Param\AjaxString $description
      * @throws Difra\Exception
      */
     public function saveAjaxAction(
-        \Difra\Param\AjaxString $name,
-        \Difra\Param\AjaxString $text,
-        \Difra\Param\AjaxInt $id = null,
-        \Difra\Param\AjaxString $description = null
+        Param\AjaxString $name,
+        Param\AjaxString $text,
+        Param\AjaxInt $id = null,
+        Param\AjaxString $description = null
     ) {
         if ($id) {
-            if (!$snippet = \Difra\Plugins\CMS\Snippet::getById($id->val())) {
+            if (!$snippet = CMS\Snippet::getById($id->val())) {
                 throw new \Difra\Exception('Snippet cannot be saved — bad ID');
             }
         } else {
-            $snippet = \Difra\Plugins\CMS\Snippet::create();
+            $snippet = CMS\Snippet::create();
         }
         $snippet->setName($name);
         $snippet->setDescription($description);
         $snippet->setText($text);
-        \Difra\Ajaxer::redirect('/adm/content/snippets');
+        Ajaxer::redirect('/adm/content/snippets');
     }
 
     /**
-     * @param \Difra\Param\AnyInt $id
-     * @param \Difra\Param\AjaxInt $confirm
+     * /adm/content/snippets/del
+     * @param Param\AnyInt $id
+     * @param Param\AjaxInt $confirm
      */
-    public function delAjaxAction(\Difra\Param\AnyInt $id, \Difra\Param\AjaxInt $confirm = null)
+    public function delAjaxAction(Param\AnyInt $id, Param\AjaxInt $confirm = null)
     {
-        if (!$snippet = \Difra\Plugins\CMS\Snippet::getById($id->val())) {
-            \Difra\Ajaxer::redirect('/adm/cms/snippets');
+        if (!$snippet = \Difra\CMS\Snippet::getById($id->val())) {
+            Ajaxer::redirect('/adm/cms/snippets');
         }
         if (!$confirm) {
-            \Difra\Ajaxer::confirm(
+            Ajaxer::confirm(
                 \Difra\Locales::get('cms/adm/snippet/del-confirm1') .
                 $snippet->getName() .
                 \Difra\Locales::get('cms/adm/snippet/del-confirm2')
@@ -88,7 +94,7 @@ class AdmContentSnippetsController extends \Difra\Controller
             return;
         }
         $snippet->del();
-        \Difra\Ajaxer::close();
-        \Difra\Ajaxer::redirect('/adm/content/snippets');
+        Ajaxer::close();
+        Ajaxer::redirect('/adm/content/snippets');
     }
 }

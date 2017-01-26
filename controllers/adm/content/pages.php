@@ -1,25 +1,21 @@
 <?php
 
 use Difra\Ajaxer;
-use Difra\Plugins\CMS;
+use Difra\CMS;
+use Difra\Param;
 
 /**
  * Class AdmContentPagesController
  */
-class AdmContentPagesController extends \Difra\Controller
+class AdmContentPagesController extends \Difra\Controller\Adm
 {
-    public function dispatch()
-    {
-        \Difra\View::$instance = 'adm';
-    }
-
     /**
      * Pages list
      */
     public function indexAction()
     {
         $listNode = $this->root->appendChild($this->xml->createElement('CMSList'));
-        \Difra\Plugins\CMS::getInstance()->getListXML($listNode);
+        CMS::getInstance()->getListXML($listNode);
     }
 
     /**
@@ -32,32 +28,32 @@ class AdmContentPagesController extends \Difra\Controller
 
     /**
      * Edit page form
-     * @param \Difra\Param\AnyInt $id
+     * @param Param\AnyInt $id
      */
-    public function editAction(\Difra\Param\AnyInt $id)
+    public function editAction(Param\AnyInt $id)
     {
         /** @var $editNode \DOMElement */
         $editNode = $this->root->appendChild($this->xml->createElement('CMSEdit'));
-        \Difra\Plugins\CMS\Page::get($id->val())->getXML($editNode);
+        CMS\Page::get($id->val())->getXML($editNode);
     }
 
     /**
      * Save page
-     * @param \Difra\Param\AjaxString $title
-     * @param \Difra\Param\AjaxString $tag
-     * @param \Difra\Param\AjaxHTML $body
-     * @param \Difra\Param\AjaxInt $id
+     * @param Param\AjaxString $title
+     * @param Param\AjaxString $tag
+     * @param Param\AjaxHTML $body
+     * @param Param\AjaxInt $id
      */
     public function saveAjaxAction(
-        \Difra\Param\AjaxString $title,
-        \Difra\Param\AjaxString $tag,
-        \Difra\Param\AjaxHTML $body,
-        \Difra\Param\AjaxInt $id = null
+        Param\AjaxString $title,
+        Param\AjaxString $tag,
+        Param\AjaxHTML $body,
+        Param\AjaxInt $id = null
     ) {
         if ($id) {
-            $page = \Difra\Plugins\CMS\Page::get($id->val());
+            $page = CMS\Page::get($id->val());
         } else {
-            $page = \Difra\Plugins\CMS\Page::create();
+            $page = CMS\Page::create();
         }
         $page->setTitle($title->val());
         $page->setUri($tag->val());
@@ -67,18 +63,18 @@ class AdmContentPagesController extends \Difra\Controller
 
     /**
      * Delete page
-     * @param \Difra\Param\AnyInt $id
-     * @param \Difra\Param\AjaxCheckbox $confirm
+     * @param Param\AnyInt $id
+     * @param Param\AjaxCheckbox $confirm
      */
-    public function deleteAjaxAction(\Difra\Param\AnyInt $id, \Difra\Param\AjaxCheckbox $confirm = null)
+    public function deleteAjaxAction(Param\AnyInt $id, Param\AjaxCheckbox $confirm = null)
     {
         if ($confirm and $confirm->val()) {
-            \Difra\Plugins\CMS\Page::get($id->val())->delete();
+            CMS\Page::get($id->val())->delete();
             Ajaxer::close();
             Ajaxer::redirect('/adm/content/pages');
             return;
         }
-        $page = \Difra\Plugins\CMS\Page::get($id->val());
+        $page = CMS\Page::get($id->val());
         Ajaxer::display(
             '<span>'
             . \Difra\Locales::get('cms/adm/delete-page-confirm-1')
