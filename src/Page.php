@@ -270,7 +270,7 @@ class Page
             if ($body->val(true) == $this->body) {
                 return;
             }
-            $body->saveImages(DIR_DATA . 'cms/img/' . $this->id, '/i/' . $this->id);
+            $body->saveImages(Envi\Roots::getData() . '/cms/img/' . $this->id, '/i/' . $this->id);
             $this->body = $body->val();
         } else {
             if ($body == $this->body) {
@@ -359,7 +359,7 @@ class Page
         $this->loaded = true;
         $this->modified = false;
         if ($this->id) {
-            $path = DIR_DATA . 'cms/img/' . $this->id;
+            $path = Envi\Roots::getData() . '/cms/img/' . $this->id;
             if (is_dir($path)) {
                 $dir = opendir($path);
                 while (false !== ($file = readdir($dir))) {
