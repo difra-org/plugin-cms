@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-        "difra/difra": "7.0.x-dev"
+        "difra/difra": "7.0.x-dev",
+        "difra/editor": "dev-master"
     },
     "autoload": {
         "files": [
