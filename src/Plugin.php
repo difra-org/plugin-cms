@@ -2,8 +2,8 @@
 
 namespace Difra\CMS;
 
-use Difra\Events;
 use Difra\CMS;
+use Difra\Events\Event;
 
 /**
  * Class Plugin
@@ -16,9 +16,9 @@ class Plugin extends \Difra\Plugin
      */
     public function init()
     {
-        Events::register(Events::EVENT_ACTION_REDEFINE, 'Difra\CMS::run');
-        Events::register(Events::EVENT_ACTION_DONE, 'Difra\CMS::addMenuXML');
-        Events::register(Events::EVENT_ACTION_DONE, 'Difra\CMS::addSnippetsXML');
+        Event::getInstance(Event::EVENT_ACTION_REDEFINE)->registerHandler('Difra\CMS::run');
+        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler('Difra\CMS::addMenuXML');
+        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler('Difra\CMS::addSnippetsXML');
     }
 
     /**
