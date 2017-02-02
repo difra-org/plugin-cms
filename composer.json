@@ -14,8 +14,8 @@
         "type": "zip"
     },
     "require": {
-        "difra/difra": "7.0.x-dev",
-        "difra/editor": "dev-master"
+        "difra/difra": "~7.0.0",
+        "difra/editor": "~1.0.0"
     },
     "autoload": {
         "files": [
