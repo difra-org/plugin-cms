@@ -9,6 +9,10 @@
             "email": "nap@napych.com"
         }
     ],
+    "dist": {
+        "url": "https://www.difra.org/download/difra-cms-1.0.0.zip",
+        "type": "zip"
+    },
     "require": {
         "difra/difra": "7.0.x-dev",
         "difra/editor": "dev-master"
