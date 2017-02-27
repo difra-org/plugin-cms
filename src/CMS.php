@@ -7,6 +7,7 @@ use Difra\CMS\Menu;
 use Difra\CMS\MenuItem;
 use Difra\CMS\Page;
 use Difra\CMS\Snippet;
+use Difra\Tools\Sitemap;
 
 /**
  * Class CMS
@@ -105,7 +106,6 @@ class CMS
 
     /**
      * Get URL list for sitemap
-     * @return array|false
      */
     public static function getSitemap()
     {
@@ -114,7 +114,7 @@ class CMS
         );
         $res = [];
         if (empty($data)) {
-            return false;
+            return;
         }
         foreach ($data as $t) {
             $rec = ['loc' => $t['tag']];
@@ -123,7 +123,7 @@ class CMS
             }
             $res[] = $rec;
         }
-        return $res;
+        Sitemap::add($res);
     }
 
     /**
