@@ -1,0 +1,11 @@
+1.0.2
+
+* Fixes for event-driven Sitemap
+
+1.0.1
+
+* Composer requirements fixed
+
+1.0.0
+
+* Initial release as composer module
