@@ -17,9 +17,9 @@ class Plugin extends \Difra\Plugin
      */
     public function init()
     {
-        Event::getInstance(Event::EVENT_ACTION_REDEFINE)->registerHandler('Difra\CMS::run');
-        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler('Difra\CMS::addMenuXML');
-        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler('Difra\CMS::addSnippetsXML');
+        Event::getInstance(Event::EVENT_ACTION_REDEFINE)->registerHandler([CMS::class, 'run']);
+        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler([CMS::class, 'addMenuXML']);
+        Event::getInstance(Event::EVENT_ACTION_DONE)->registerHandler([CMS::class, 'addSnippetsXML']);
         Event::getInstance(Sitemap::EVENT_NAME)->registerHandler([CMS::class, 'getSitemap']);
     }
 }
