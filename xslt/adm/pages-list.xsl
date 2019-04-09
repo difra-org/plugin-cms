@@ -5,18 +5,14 @@
 		<h2>
 			<xsl:value-of select="$locale/cms/adm/h2"/>
 		</h2>
-		<a href="/adm/content/pages/add" class="action add"/>
+		<a href="/adm/content/pages/add" class="btn btn-primary fas fa-plus" title="{$locale/cms/adm/actions/add}"/>
+		<br/>
+		<br/>
 
 		<xsl:choose>
 			<xsl:when test="page">
-				<table>
-					<colgroup>
-						<col/>
-						<col/>
-						<col style="width: 120px"/>
-						<col style="width: 100px"/>
-					</colgroup>
-					<thead>
+				<table class="table table-striped">
+					<thead class="thead-dark">
 						<tr>
 							<th>
 								<xsl:value-of select="$locale/cms/adm/name"/>
@@ -36,9 +32,9 @@
 				</table>
 			</xsl:when>
 			<xsl:otherwise>
-				<span class="message">
+				<div class="alert alert-info">
 					<xsl:value-of select="$locale/cms/adm/no-pages"/>
-				</span>
+				</div>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
@@ -62,9 +58,11 @@
 				</xsl:choose>
 			</td>
 			<td class="actions">
-				<a href="{@uri}" target="_blank" class="action view"/>
-				<a href="/adm/content/pages/edit/{@id}" class="action edit"/>
-				<a href="/adm/content/pages/delete/{@id}" class="action delete ajaxer"/>
+				<a href="{@uri}" target="_blank" class="btn btn-dark fas fa-eye" title="{$locale/cms/adm/actions/view}"/>
+				<xsl:text> </xsl:text>
+				<a href="/adm/content/pages/edit/{@id}" class="btn btn-dark fas fa-edit" title="{$locale/cms/adm/actions/edit}"/>
+				<xsl:text> </xsl:text>
+				<a href="/adm/content/pages/delete/{@id}" class="btn btn-danger fas fa-trash-alt ajaxer" title="{$locale/cms/adm/actions/delete}"/>
 			</td>
 		</tr>
 	</xsl:template>

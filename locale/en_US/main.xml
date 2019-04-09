@@ -39,7 +39,6 @@
 			<menuitem>
 				<add-item-title>Add element</add-item-title>
 				<edit-item-title>Edit element</edit-item-title>
-				<options>Options</options>
 				<title>Name</title>
 				<type>Type</type>
 				<content>Content</content>
@@ -62,6 +61,14 @@
 				<del-confirm1>Do you really want to delete snippet «</del-confirm1>
 				<del-confirm2>»?</del-confirm2>
 			</snippet>
+			<actions>
+				<add>Add</add>
+				<view>View</view>
+				<edit>Edit</edit>
+				<delete>Delete</delete>
+				<up>Move up</up>
+				<down>Move down</down>
+			</actions>
 		</adm>
 	</cms>
 </locale>

@@ -9,20 +9,14 @@
             <xsl:text> → </xsl:text>
             <xsl:value-of select="$locale/cms/adm/items/h2"/>
         </h2>
-        <a href="/adm/content/menu/add/{@id}" class="button">
-            <xsl:value-of select="$locale/cms/adm/items/new"/>
-        </a>
+        <a href="/adm/content/menu/add/{@id}" class="btn btn-primary fas fa-plus" title="$locale/cms/adm/items/new"/>
+        <br/>
+        <br/>
 
         <xsl:choose>
             <xsl:when test="menuitem">
-                <table>
-                    <colgroup>
-                        <col/>
-                        <col style="width: 220px"/>
-                        <col style="width: 220px"/>
-                        <col style="width: 130px"/>
-                    </colgroup>
-                    <thead>
+                <table class="table table-striped">
+                    <thead class="thead-dark">
                         <tr>
                             <th>
                                 <xsl:value-of select="$locale/cms/adm/menuitem/title"/>
@@ -32,7 +26,7 @@
                             </th>
                             <th>
                                 <xsl:value-of
-                                    select="$locale/cms/adm/menuitem/content"/>
+                                        select="$locale/cms/adm/menuitem/content"/>
                             </th>
                             <th>
                             </th>
@@ -44,9 +38,9 @@
                 </table>
             </xsl:when>
             <xsl:otherwise>
-                <span class="message">
+                <div class="alert alert-info">
                     <xsl:value-of select="$locale/cms/adm/items/empty"/>
-                </span>
+                </div>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
@@ -80,23 +74,32 @@
                     <a href="/adm/content/menu/edit/{@id}" class="action edit"/>
                     <xsl:choose>
                         <xsl:when test="$depth+1&lt;$nodeSet/@depth">
-                            <a href="/adm/content/menu/add/{$nodeSet/@id}/parent/{@id}" class="action add"/>
+                            <a href="/adm/content/menu/add/{$nodeSet/@id}/parent/{@id}" class="btn btn-dark fas fa-plus" title="{$locale/cms/adm/actions/add}"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <a href="#" class="action add disabled"/>
+                            <a href="#" class="btn btn-dark fas fa-plus disabled"/>
                         </xsl:otherwise>
                     </xsl:choose>
-                    <a href="/adm/content/menu/up/{@id}" class="action up ajaxer">
-                        <xsl:if test="position()=1">
-                            <xsl:attribute name="class">action up ajaxer disabled</xsl:attribute>
-                        </xsl:if>
+                    <xsl:text> </xsl:text>
+                    <a href="/adm/content/menu/up/{@id}" title="{$locale/cms/adm/actions/up}">
+                        <xsl:attribute name="class">
+                            <xsl:text>btn btn-dark fas fa-caret-up ajaxer</xsl:text>
+                            <xsl:if test="position()=1">
+                                <xsl:text> disabled</xsl:text>
+                            </xsl:if>
+                        </xsl:attribute>
                     </a>
-                    <a href="/adm/content/menu/down/{@id}" class="action down ajaxer">
-                        <xsl:if test="position()=last()">
-                            <xsl:attribute name="class">action down ajaxer disabled</xsl:attribute>
-                        </xsl:if>
+                    <xsl:text> </xsl:text>
+                    <a href="/adm/content/menu/down/{@id}" title="{$locale/cms/adm/actions/down}">
+                        <xsl:attribute name="class">
+                            <xsl:text>btn btn-dark fas fa-caret-down ajaxer</xsl:text>
+                            <xsl:if test="position()=last()">
+                                <xsl:text> disabled</xsl:text>
+                            </xsl:if>
+                        </xsl:attribute>
                     </a>
-                    <a href="/adm/content/menu/delete/{@id}" class="action delete ajaxer"/>
+                    <xsl:text> </xsl:text>
+                    <a href="/adm/content/menu/delete/{@id}" class="btn btn-danger fas fa-trash-alt ajaxer" title="{$locale/cms/adm/actions/delete}"/>
                 </td>
             </tr>
             <xsl:call-template name="MenuItems-List">

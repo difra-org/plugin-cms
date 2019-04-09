@@ -39,7 +39,6 @@
 			<menuitem>
 				<add-item-title>Добавление элемента</add-item-title>
 				<edit-item-title>Редактирование элемента</edit-item-title>
-				<options>Параметры</options>
 				<title>Название</title>
 				<type>Тип элемента</type>
 				<content>Содержимое</content>
@@ -62,6 +61,14 @@
 				<del-confirm1>Действительно удалить сниппет «</del-confirm1>
 				<del-confirm2>»?</del-confirm2>
 			</snippet>
+			<actions>
+				<add>Добавить</add>
+				<view>Просмотр</view>
+				<edit>Редактировать</edit>
+				<delete>Удалить</delete>
+				<up>Выше</up>
+				<down>Ниже</down>
+			</actions>
 		</adm>
 	</cms>
 </locale>

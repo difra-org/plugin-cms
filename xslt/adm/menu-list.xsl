@@ -7,12 +7,8 @@
 
 		<xsl:choose>
 			<xsl:when test="menuobj">
-				<table>
-					<colgroup>
-						<col style="width: 250px"/>
-						<col/>
-					</colgroup>
-					<thead>
+				<table class="table table-striped">
+					<thead class="thead-dark">
 						<tr>
 							<th>
 								<xsl:value-of select="$locale/cms/adm/menu/name"/>

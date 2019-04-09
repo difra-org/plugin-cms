@@ -30,46 +30,35 @@
             <xsl:text> → </xsl:text>
             <xsl:value-of select="$locale/cms/adm/menuitem/edit-item-title"/>
         </h2>
-        <h3>
-            <xsl:value-of select="$locale/cms/adm/menuitem/options"/>
-        </h3>
         <xsl:call-template name="CMSMenuItem"/>
     </xsl:template>
 
     <xsl:template name="CMSMenuItem">
-        <table class="form">
-            <colgroup>
-                <col style="width: 250px"/>
-                <col/>
-            </colgroup>
-            <thead>
-                <tr>
-                    <th>
-                        <xsl:value-of select="$locale/cms/adm/menuitem/type"/>
-                    </th>
-                    <td>
-                        <select name="type" onchange="cms.switchItemForm(this.value)">
-                            <option value="page">
-                                <xsl:value-of select="$locale/cms/adm/menuitem/type-page"/>
-                            </option>
-                            <option value="link">
-                                <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and (@link)">
-                                    <xsl:attribute name="selected">selected</xsl:attribute>
-                                </xsl:if>
-                                <xsl:value-of select="$locale/cms/adm/menuitem/type-link"/>
-                            </option>
-                            <option value="empty">
-                                <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and not (@link)">
-                                    <xsl:attribute name="selected">selected</xsl:attribute>
-                                </xsl:if>
-                                <xsl:value-of select="$locale/cms/adm/menuitem/type-empty"/>
-                            </option>
-                        </select>
-                    </td>
-                </tr>
-                <xsl:call-template name="CMSMenuItemParentSelect"/>
-            </thead>
-        </table>
+        <div class="form-group row">
+            <label for="cms-menuitem-type" class="col-sm-2 col-form-label">
+                <xsl:value-of select="$locale/cms/adm/menuitem/type"/>
+            </label>
+            <div class="col-sm-10">
+                <select name="type" onchange="cms.switchItemForm(this.value)" id="cms-menuitem-type" class="form-control">
+                    <option value="page">
+                        <xsl:value-of select="$locale/cms/adm/menuitem/type-page"/>
+                    </option>
+                    <option value="link">
+                        <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and (@link)">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="$locale/cms/adm/menuitem/type-link"/>
+                    </option>
+                    <option value="empty">
+                        <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and not (@link)">
+                            <xsl:attribute name="selected">selected</xsl:attribute>
+                        </xsl:if>
+                        <xsl:value-of select="$locale/cms/adm/menuitem/type-empty"/>
+                    </option>
+                </select>
+            </div>
+        </div>
+        <xsl:call-template name="CMSMenuItemParentSelect"/>
         <!-- Add/edit page -->
         <div id="pageForm" class="menuItemForm">
             <xsl:choose>
@@ -78,34 +67,28 @@
                         <input type="hidden" name="menu" value="{@menu}"/>
                         <input type="hidden" name="id" value="{@id}"/>
                         <input type="hidden" name="parent" value="{@parent}"/>
-                        <table class="form">
-                            <colgroup>
-                                <col style="width: 250px"/>
-                                <col/>
-                            </colgroup>
-                            <tbody>
-                                <tr>
-                                    <th>
-                                        <xsl:value-of select="$locale/cms/adm/menuitem/type-page"/>
-                                    </th>
-                                    <td>
-                                        <select name="page">
-                                            <xsl:for-each select="page">
-                                                <option value="{@id}">
-                                                    <xsl:if test="@id=../@page">
-                                                        <xsl:attribute name="selected">
-                                                            <xsl:text>selected</xsl:text>
-                                                        </xsl:attribute>
-                                                    </xsl:if>
-                                                    <xsl:value-of select="@title"/>
-                                                </option>
-                                            </xsl:for-each>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <input type="submit" class="large_spacing" value="{$locale/cms/adm/menuitem/submit}"/>
+                        <div class="form-group row">
+                            <label for="cms-menuitem-page" class="col-sm-2 col-form-label">
+                                <xsl:value-of select="$locale/cms/adm/menuitem/type-page"/>
+                            </label>
+                            <div class="col-sm-10">
+                                <select name="page" class="form-control">
+                                    <xsl:for-each select="page">
+                                        <option value="{@id}">
+                                            <xsl:if test="@id=../@page">
+                                                <xsl:attribute name="selected">
+                                                    <xsl:text>selected</xsl:text>
+                                                </xsl:attribute>
+                                            </xsl:if>
+                                            <xsl:value-of select="@title"/>
+                                        </option>
+                                    </xsl:for-each>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <input type="submit" class="btn btn-primary" value="{$locale/cms/adm/menuitem/submit}"/>
+                        </div>
                     </form>
                 </xsl:when>
                 <xsl:otherwise>
@@ -123,32 +106,24 @@
                 <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and @link">
                     <script type="text/javascript">cms.switchItemForm('link');</script>
                 </xsl:if>
-                <table class="form">
-                    <colgroup>
-                        <col style="width: 250px"/>
-                        <col/>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <xsl:value-of select="$locale/cms/adm/menuitem/link-label"/>
-                            </th>
-                            <td>
-                                <input type="text" name="label" class="full-width" value="{@label}"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <xsl:value-of select="$locale/cms/adm/menuitem/type-link"/>
-                            </th>
-                            <td>
-                                <input type="text" name="link" class="full-width" value="{@link}"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="form-buttons">
-                    <input type="submit" value="{$locale/cms/adm/menuitem/submit}"/>
+                <div class="form-group row">
+                    <label for="cms-menuitem-link-label" class="col-sm-2 col-form-label">
+                        <xsl:value-of select="$locale/cms/adm/menuitem/link-label"/>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="label" class="form-control" value="{@label}" id="cms-menuitem-link-label"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="cms-menuitem-link" class="col-sm-2 col-form-label">
+                        <xsl:value-of select="$locale/cms/adm/menuitem/type-link"/>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="link" class="form-control" value="{@link}" id="cms-menuitem-link"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <input type="submit" class="btn btn-primary" value="{$locale/cms/adm/menuitem/submit}"/>
                 </div>
             </form>
         </div>
@@ -160,39 +135,31 @@
                 <xsl:if test="name()='CMSMenuItemEdit' and not(@page) and not(@link)">
                     <script type="text/javascript">cms.switchItemForm('empty');</script>
                 </xsl:if>
-                <table class="form">
-                    <colgroup>
-                        <col style="width: 250px"/>
-                        <col/>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <xsl:value-of select="$locale/cms/adm/menuitem/link-label"/>
-                            </th>
-                            <td>
-                                <input type="text" name="label" class="full-width" value="{@label}"/>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="form-buttons">
-                    <input type="submit" value="{$locale/cms/adm/menuitem/submit}"/>
+                <div class="form-group row">
+                    <label for="cms-menuitem-empty-label" class="col-sm-2 col-form-label">
+                        <xsl:value-of select="$locale/cms/adm/menuitem/link-label"/>
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" name="label" class="form-control" value="{@label}" id="cms-menuitem-empty-label"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <input type="submit" class="btn btn-primary" value="{$locale/cms/adm/menuitem/submit}"/>
                 </div>
             </form>
         </div>
     </xsl:template>
 
     <xsl:template name="CMSMenuItemParentSelect">
-        <tr>
-            <th>Parent:</th>
-            <td>
-                <select name="parent" onchange="$('input[name=\'parent\']').val($(this).val())">
+        <div class="form-group row">
+            <label for="cms-menuitem-parent" class="col-sm-2 col-form-label">Parent</label>
+            <div class="col-sm-10">
+                <select name="parent" onchange="$('input[name=\'parent\']').val($(this).val())" class="form-control">
                     <option value="0">—</option>
                     <xsl:call-template name="CMSMenuItemParentOption"/>
                 </select>
-            </td>
-        </tr>
+            </div>
+        </div>
     </xsl:template>
 
     <xsl:template name="CMSMenuItemParentOption">
