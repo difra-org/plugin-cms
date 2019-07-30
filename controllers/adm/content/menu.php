@@ -1,5 +1,7 @@
 <?php
 
+namespace Controller\Adm\Content;
+
 use
     Difra\Ajaxer,
     Difra\CMS,
@@ -8,7 +10,7 @@ use
 /**
  * Class AdmContentMenuController
  */
-class AdmContentMenuController extends \Difra\Controller\Adm
+class Menu extends \Difra\Controller\Adm
 {
     /**
      * Menu list

@@ -1,5 +1,7 @@
 <?php
 
+namespace Controller\Adm\Content;
+
 use Difra\Ajaxer;
 use Difra\CMS;
 use Difra\Param;
@@ -7,7 +9,7 @@ use Difra\Param;
 /**
  * Class AdmContentPagesController
  */
-class AdmContentPagesController extends \Difra\Controller\Adm
+class Pages extends \Difra\Controller\Adm
 {
     /**
      * Pages list

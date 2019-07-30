@@ -1,5 +1,7 @@
 <?php
 
+namespace Controller\Adm\Content;
+
 use Difra\Ajaxer;
 use Difra\CMS;
 use Difra\Param;
@@ -7,7 +9,7 @@ use Difra\Param;
 /**
  * Class AdmContentSnippetsController
  */
-class AdmContentSnippetsController extends \Difra\Controller\Adm
+class Snippets extends \Difra\Controller\Adm
 {
     /**
      * /adm/content/snippets
