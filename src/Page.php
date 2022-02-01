@@ -298,7 +298,7 @@ class Page
     public function setUri($uri)
     {
         $this->load();
-        if (!strlen($uri) or $uri{0} != '/') {
+        if (!strlen($uri) or $uri[0] != '/') {
             $uri = '/' . $uri;
         }
         if ($uri == $this->uri) {
@@ -363,7 +363,7 @@ class Page
             if (is_dir($path)) {
                 $dir = opendir($path);
                 while (false !== ($file = readdir($dir))) {
-                    if ($file{0} == '.') {
+                    if ($file[0] === '.') {
                         continue;
                     }
                     /** @noinspection PhpUsageOfSilenceOperatorInspection */
