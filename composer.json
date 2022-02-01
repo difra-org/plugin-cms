@@ -1,27 +1,27 @@
 {
-    "name": "difra/cms",
-    "description": "CMS plugin for Difra framework",
+    "name": "difra/plugin-cms",
+    "description": "Simple CMS plugin for Difra",
     "type": "library",
     "license": "BSD-2-Clause",
     "authors": [
         {
-            "name": "Eduard Kutuev",
-            "email": "nap@napych.com"
+            "name": "Ed Kutuev",
+            "email": "ed@napych.com"
         }
     ],
     "dist": {
-        "url": "https://github.com/difra-org/cms/archive/1.0.2.zip",
+        "url": "https://github.com/difra-org/plugin-cms/archive/refs/tags/8.0.0.zip",
         "type": "zip"
     },
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:difra-org/cms.git"
+            "url": "git@github.com:difra-org/plugin-cms.git"
         }
     ],
     "require": {
-        "difra/difra": "~7.0.0",
-        "difra/editor": "~1.0.0"
+        "difra/difra": "~8.0.0",
+        "difra/editor": "~8.0.0"
     },
     "autoload": {
         "files": [
