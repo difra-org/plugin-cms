@@ -21,7 +21,7 @@
     ],
     "require": {
         "difra/difra": "~8.0.0",
-        "difra/editor": "~8.0.0"
+        "difra/bindinb-ckeditor": "~8.0.0"
     },
     "autoload": {
         "files": [
