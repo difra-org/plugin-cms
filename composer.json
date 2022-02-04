@@ -21,6 +21,7 @@
     ],
     "require": {
         "difra/difra": "~8.0.0",
+        "difra/lib-events": "~8.0.0",
         "difra/binding-ckeditor": "~8.0.0"
     },
     "autoload": {
